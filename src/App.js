@@ -182,7 +182,7 @@ class App extends Component {
                         const movieID = mo.id;
 
                         return (
-                            <li key={mo.id}> favorite movie is {movieName}. </li>
+                            <li key={mo.id}> favorite movie is {movieName}. gggggg </li>
                         )
                     }
                     )
