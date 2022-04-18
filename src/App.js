@@ -5,7 +5,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Dashboard from "./Dashboard";
+import Dashboard from "./DashboardMe";
 
 
 const profiles = [
@@ -103,19 +103,64 @@ class App extends Component {
     (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes). The
     Component's constructor is the first thing that runs when the object is created.
     */
-    constructor(props) {
+    constructor(props)
+    {
         super(props);
         this.usersByMovie = {};
+        this.TextOnly = "Welcome";
 
-        /*
-        We can map the users by the movie they liked.
-        */
-        profiles.forEach(profile => {
+        this.MoviePerUsersList =
+            [
+                {
+                    MovieID: 1,
+                    MovieName: "Planet Earth 1",
+                    UserModel:
+                        [
+                            {
+                                UserID: 1,
+                                UserName: "Khaled",
+                            },
+                            {
+                                UserID: 2,
+                                UserName: "Ahmed",
+                            },
+                        ],
+                },
+                {
+                    MovieID: 2,
+                    MovieName: "Million Dollar Baby",
+                    UserModel:
+                        [
+                            {
+                                UserID: 3,
+                                UserName: "Kamel",
+                            },
+                            {
+                                UserID: 4,
+                                UserName: "Ayman",
+                            },
+                        ],
+            },
+            {
+                MovieID: 3,
+                MovieName: "Get Out",
+                UserModel: [],
+            },
+            ];
+
+
+
+
+        
+        profiles.forEach(profile =>
+        {
             const movieID = profile.favoriteMovieID;
 
-            if (this.usersByMovie[movieID]) {
+            if (this.usersByMovie[movieID])
+            {
                 this.usersByMovie[movieID].push(profile.userID);
-            } else {
+            } else
+            {
                 this.usersByMovie[movieID] = [profile.userID];
             }
         });
@@ -133,11 +178,10 @@ class App extends Component {
                     <h1 className="App-title">ReactND - Coding Practice</h1>
                 </header>
                 <h2>How Popular is Your Favorite Movie?</h2>
-                <Dashboard
-                    usersByMovie={this.usersByMovie}
-                    movies={movies}
-                    users={users}
+
+                <Dashboard  MoviePerUsersList={this.MoviePerUsersList}
                 />
+
             </div>
         );
     }
