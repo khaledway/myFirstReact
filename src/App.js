@@ -58,7 +58,7 @@ const users = {
         userName: "user123"
     },
     4: {
-        id: 3,
+        id:4 ,
         name: "John Doe",
         userName: "user123"
     },
@@ -106,64 +106,90 @@ class App extends Component {
     constructor(props)
     {
         super(props);
-        this.usersByMovie = {};
-        this.TextOnly = "Welcome";
+/*        this.usersByMovie = {};*/
+        
 
-        this.MoviePerUsersList =
-            [
-                {
-                    MovieID: 1,
-                    MovieName: "Planet Earth 1",
-                    UserModel:
-                        [
-                            {
-                                UserID: 1,
-                                UserName: "Khaled",
-                            },
-                            {
-                                UserID: 2,
-                                UserName: "Ahmed",
-                            },
-                        ],
-                },
-                {
-                    MovieID: 2,
-                    MovieName: "Million Dollar Baby",
-                    UserModel:
-                        [
-                            {
-                                UserID: 3,
-                                UserName: "Kamel",
-                            },
-                            {
-                                UserID: 4,
-                                UserName: "Ayman",
-                            },
-                        ],
-            },
-            {
-                MovieID: 3,
-                MovieName: "Get Out",
-                UserModel: [],
-            },
-            ];
+
+        this.MoviePerUsersListModified=[];
+        var objItem;
+        this.MoviePerUsersList = [];
+
+        
+
+        this.MoviePerUsersListModified = Object.values(movies).map(mo =>
+        {
+            objItem = {};
+            var newMovieID = mo.id;
+            var newMovieName = mo.name;
+            var userIdOfMovie = profiles.filter(s => s.favoriteMovieID == newMovieID).map(s => s.userID);
+            /*            var UserNames = Object.values(users).filter(s => userIdOfMovie.includes(s.id.toString())).map(s => s.name);*/
+            var UserModel = Object.values(users).filter(s => userIdOfMovie.includes(s.id.toString())).map(({ id, name }) => ({ id, name }));
+
+
+            objItem.MovieID = newMovieID;
+            objItem.MovieName = newMovieName;
+            objItem.UserModel = UserModel;
+            this.MoviePerUsersList.push(objItem)
+        });
+
+
+       
+
+        //this.MoviePerUsersList =
+        //    [
+        //        {
+        //            MovieID: 1,
+        //            MovieName: "Planet Earth 1",
+        //            UserModel:
+        //                [
+        //                    {
+        //                        UserID: 1,
+        //                        UserName: "Khaled",
+        //                    },
+        //                    {
+        //                        UserID: 2,
+        //                        UserName: "Ahmed",
+        //                    },
+        //                ],
+        //        },
+        //        {
+        //            MovieID: 2,
+        //            MovieName: "Million Dollar Baby",
+        //            UserModel:
+        //                [
+        //                    {
+        //                        UserID: 3,
+        //                        UserName: "Kamel",
+        //                    },
+        //                    {
+        //                        UserID: 4,
+        //                        UserName: "Ayman",
+        //                    },
+        //                ],
+        //    },
+        //    {
+        //        MovieID: 3,
+        //        MovieName: "Get Out",
+        //        UserModel: [],
+        //    },
+        //    ];
 
 
 
 
         
-        profiles.forEach(profile =>
-        {
-            const movieID = profile.favoriteMovieID;
+        //profiles.forEach(profile =>
+        //{
+        //    const movieID = profile.favoriteMovieID;
 
-            if (this.usersByMovie[movieID])
-            {
-                this.usersByMovie[movieID].push(profile.userID);
-            } else
-            {
-                this.usersByMovie[movieID] = [profile.userID];
-            }
-        });
+        //    if (this.usersByMovie[movieID])
+        //    {
+        //        this.usersByMovie[movieID].push(profile.userID);
+        //    } else
+        //    {
+        //        this.usersByMovie[movieID] = [profile.userID];
+        //    }
+        //});
     }
 
     /*
@@ -179,7 +205,7 @@ class App extends Component {
                 </header>
                 <h2>How Popular is Your Favorite Movie?</h2>
 
-                <Dashboard  MoviePerUsersList={this.MoviePerUsersList}
+                <Dashboard MoviePerUsersList={this.MoviePerUsersList}
                 />
 
             </div>

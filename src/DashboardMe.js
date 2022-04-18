@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import UserList from "./UserListMe";
 
 class Dashboard extends Component {
     render()
@@ -18,20 +18,29 @@ class Dashboard extends Component {
 
             var exist = item.UserModel.length > 0;
             return <li key={currentMovieID}> <h2> {currentMovieName}</h2>
-                {exist
-                    ?
-                    <div>
-                        <p>Liked By:</p>
-                        <ul>
 
-                            {item.UserModel.map(user =>
-                            {
-                                return (<li key={user.UserID}>  {user.UserName} </li>)
-                            })
-                            }
-                                    </ul> </div>
-                    : <p>None of the current users liked this movie</p>
-                }
+
+                <UserList UserModelList={ item.UserModel} />
+
+
+                {/*{exist*/}
+                {/*    ?*/}
+                {/*    <div>*/}
+                {/*        <p>Liked By:</p>*/}
+                {/*        <ul>*/}
+
+                {/*            {item.UserModel.map(user =>*/}
+                {/*            {*/}
+                {/*                return (<li key={user.UserID}>  {user.UserName} </li>)*/}
+                {/*            })*/}
+                {/*            }*/}
+                {/*                    </ul> </div>*/}
+                {/*    : <p>None of the current users liked this movie</p>*/}
+                {/*}*/}
+
+
+
+
             </li>
         });
         return <div> <ul>{BodyMoviePerUsersList} </ul> </div>;
