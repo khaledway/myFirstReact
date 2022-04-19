@@ -199,8 +199,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
+                <header >
+                 {/*   <img  className="App-logo" alt="logo" />*/}
                     <h1 className="App-title">ReactND - Coding Practice</h1>
                 </header>
                 <h2>How Popular is Your Favorite Movie?</h2>
