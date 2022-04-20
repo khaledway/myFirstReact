@@ -8,10 +8,72 @@ const value1 = Math.floor(Math.random() * 100);
 const value2 = Math.floor(Math.random() * 100);
 const value3 = Math.floor(Math.random() * 100);
 const proposedAnswer = Math.floor(Math.random() * 3) + value1 + value2 + value3;
-const numQuestions = 0;
-const numCorrect = 0;
+
+
+
 
 class App extends Component {
+
+    state = {
+         numQuestions : 0,
+        numCorrect: 0,
+
+
+
+      
+    }
+
+
+    IncrementSore = () =>
+    {
+          
+        this.setState(() => ({
+
+            numQuestions: this.state.numQuestions + 1,
+            numCorrect: this.state.numCorrect + 1,
+
+        }))
+   
+    }
+
+
+
+
+
+    DecrementSore = () => {
+        this.setState(() => ({
+
+            numQuestions: this.state.numQuestions + 1,
+            numCorrect: this.state.numCorrect - 1,
+
+        }))
+    }
+
+
+    
+
+    //TestIncrementSore = () => {
+
+    //    this.setState(() => ({
+
+    //        numQuestions: this.state.numQuestions + 1,
+    //        numCorrect: this.state.numCorrect + 1,
+
+    //    }))
+    //}
+
+    TestIncrementSore = () => {
+        this.setState({                                 // remove "=" 
+            numQuestions: this.state.numQuestions + 1,
+            numCorrect: this.state.numCorrect + 1,
+        })
+        console.log('Parent State ' + this.state.numQuestions);
+        //parent's state is updating 
+    }
+
+
+
+
     render() {
         return (
             <div className="App">
@@ -24,16 +86,14 @@ class App extends Component {
                     <div className="equation">
                         <p className="text">{`${value1} + ${value2} + ${value3} = ${proposedAnswer}`}</p>
                     </div>
-                    <button>True</button>
-                    <button>False</button>
 
-                    {/*                    <Score numCorrect={numCorrect} numQuestions={numQuestions} />*/}
+                 
+                    <Score numCorrect={this.state.numCorrect} numQuestions={this.state.numQuestions}
+                        onTrueFunction={this.IncrementSore}
+                        onFalseFunction={this.DecrementSore}
+                        onTest={this.TestIncrementSore}
 
-
-
-                    <Score
                     />
-
                 </div>
             </div>
         );
