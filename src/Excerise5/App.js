@@ -12,6 +12,11 @@ const numQuestions = 0;
 const numCorrect = 0;
 
 class App extends Component {
+
+
+
+
+
     render() {
         return (
             <div className="App">
@@ -27,7 +32,7 @@ class App extends Component {
                     <button>True</button>
                     <button>False</button>
 
-                    {/*                    <Score numCorrect={numCorrect} numQuestions={numQuestions} />*/}
+{/*                    <Score numCorrect={numCorrect} numQuestions={numQuestions} />*/}
 
 
 
