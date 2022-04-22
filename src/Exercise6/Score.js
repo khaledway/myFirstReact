@@ -1,10 +1,8 @@
 
 
 
-
-
 import React, { Component } from "react";
-
+import PropTypes from 'prop-types';
 
 class Score extends Component {
     render() {
@@ -20,4 +18,13 @@ class Score extends Component {
 
     }
 }
+
+
+Score.propTypes = {
+
+    numCorrect: PropTypes.number.isRequired,
+
+}
+
+
 export default Score;

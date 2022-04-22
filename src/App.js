@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
+
 
 import Score from './Exercise6/Score';
 import Game from './Exercise6/Game';
