@@ -7,11 +7,11 @@ are solely concerned with a component's presentation as opposed to a component's
 logic (presentational components) into stateless functional components.
 */
 const Score = props => {
-    return (
-        <p className="text">
-            Your Score: {props.numCorrect}/{props.numQuestions}
-        </p>
-    );
+  return (
+    <p className="text">
+          Your Score: {props.numCorrect}/{props.numQuestions}
+    </p>
+  );
 };
 
 
