@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-
 class ItemList extends Component {
     render() {
 
@@ -18,8 +17,4 @@ class ItemList extends Component {
 
     }
 }
-
-
-
-
 export default ItemList;
