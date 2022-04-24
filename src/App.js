@@ -33,26 +33,71 @@ class BooksApp extends React.Component {
     };
 
 
+
+    handelUpdateBookStatus = (selectedOption , book) =>
+    {
+
+
+        let UpdateBookStatus = selectedOption.target.value
+        BooksAPI.update(book, UpdateBookStatus).then(booksIDs =>
+        {
+           
+            let booksToBeUpdated = this.state.AllBooks;
+
+
+            booksToBeUpdated = this.state.AllBooks.map(book =>
+            {
+                if (booksIDs.read.includes(book.id)) {
+                    return { ...book, shelf: 'read' };
+                }
+                else if (booksIDs.wantToRead.includes(book.id))
+                {
+                   return { ...book, shelf: 'wantToRead' };
+                }
+                else
+
+                {
+                    return { ...book, shelf: 'currentlyReading' };
+              }
+
+
+                return book;
+            });
+
+
+            //console.log("books intial:"+ booksToBeUpdated);
+            //booksToBeUpdated = booksToBeUpdated.map(s => s.shelf = "read");
+            //console.log("books Updated:" +booksToBeUpdated);
+
+
+
+            this.setState({
+                AllBooks: booksToBeUpdated,
+            
+            });
+
+        }
+        );
+
+
+    }
+
     ///////////////////////
     componentDidMount()
     {
         BooksAPI.getAll().then(books => this.setState({ AllBooks: books }))
         console.log(this.state.AllBooks)
     }
-
-   
-
-    ////////////////////
-
-
+    ////////////////////////////////////////////////////////////////////////////////
     render() {
         return (
             <div className="app">
-                {this.state.showSearchPage ? (
+                {this.state.showSearchPage ?
+                    (
                     <SearchBooks handleButtonToggle={this.handleButtonToggle} />
                 ) : (
-                    <ListBooks AllBooks={this.state.AllBooks} handleButtonToggle={this.handleButtonToggle} />
-                )}
+                        <ListBooks AllBooks={this.state.AllBooks} handleButtonToggle={this.handleButtonToggle} handelUpdateBookStatus={this.handelUpdateBookStatus}  />
+                    )}
             </div>
         )
     }
