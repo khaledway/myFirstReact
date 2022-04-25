@@ -82,6 +82,50 @@ class BooksApp extends React.Component {
 
     }
 
+    handleSearch = event =>
+    {
+
+        console.log("search is called")
+
+        //let filteredBooks = this.state.AllBooks.filter(s =>
+        //    s.title.toLowerCase().includes(event.target.value.toLowerCase()));
+
+
+        let filteredBooks = this.state.AllBooks;
+
+        let query = event.target.value.toLowerCase();
+
+        BooksAPI.search(query).then(books =>
+        {
+            console.log(books)
+            this.setState(prevState => ({
+                AllBooks: books
+                    
+            }));
+        });
+
+
+
+        this.handleButtonToggle();
+
+
+
+
+        //this.setState(prevState => ({
+        //    AllBooks:
+        //        (event.target.value == " " ?
+
+        //            this.state.AllBooks : filteredBooks
+
+
+        //        )
+        //}));
+
+
+
+    };
+
+
     ///////////////////////
     componentDidMount()
     {
@@ -94,7 +138,7 @@ class BooksApp extends React.Component {
             <div className="app">
                 {this.state.showSearchPage ?
                     (
-                    <SearchBooks handleButtonToggle={this.handleButtonToggle} />
+                        <SearchBooks handleButtonToggle={this.handleButtonToggle} handleSearch={this.handleSearch} />
                 ) : (
                         <ListBooks AllBooks={this.state.AllBooks} handleButtonToggle={this.handleButtonToggle} handelUpdateBookStatus={this.handelUpdateBookStatus}  />
                     )}
