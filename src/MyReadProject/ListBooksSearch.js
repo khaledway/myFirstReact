@@ -47,10 +47,11 @@ class ListBooksSearch extends Component {
 
                                                             <select  onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
                                                                 <option value="move" disabled>Move to...</option>
+                                                                <option value="none">None</option>
                                                                 <option value="currentlyReading">Currently Reading</option>
                                                                 <option value="wantToRead" >Want to Read</option>
                                                                 <option value="read">Read</option>
-                                                                <option value="none">None</option>
+                                                                
                                                             </select>
                                                         </div>
                                                     </div>
