@@ -96,7 +96,7 @@ class BooksApp extends React.Component {
             <div className="app">
                 {this.state.showSearchPage ?
                     (
-                        <SearchBooks handleButtonToggle={this.handleButtonToggle} handleSearch={this.handleSearch} handelUpdateBookStatus={this.handelUpdateBookStatus} />
+                        <SearchBooks AllBooks={this.state.AllBooks} handleButtonToggle={this.handleButtonToggle} handleSearch={this.handleSearch} handelUpdateBookStatus={this.handelUpdateBookStatus} />
                 ) : (
                         <ListBooks AllBooks={this.state.AllBooks} handleButtonToggle={this.handleButtonToggle} handelUpdateBookStatus={this.handelUpdateBookStatus}  />
                     )}

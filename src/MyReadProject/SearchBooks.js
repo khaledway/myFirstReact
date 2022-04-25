@@ -100,7 +100,7 @@ class SearchBooks extends Component
             </div>
 
 
-            <ListBooksSearch AllBooksOfSearch={this.state.AllBooksOfSearch} handelUpdateBookStatus={this.props.handelUpdateBookStatus} />
+            <ListBooksSearch AllBooks={this.props.AllBooks} AllBooksOfSearch={this.state.AllBooksOfSearch} handelUpdateBookStatus={this.props.handelUpdateBookStatus} />
            
         </div>;
 

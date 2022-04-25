@@ -10,7 +10,8 @@ class ListBooksSearch extends Component {
     render() {
 
         console.log("AllBooksOfSearch in search");
-        console.log(this.props.AllBooksOfSearch);
+        let testsearchBook = this.props.AllBooksOfSearch;
+        console.log(testsearchBook);
 
         return <div className="list-books">
             <div className="list-books-title">
@@ -26,12 +27,17 @@ class ListBooksSearch extends Component {
                                     (this.props.AllBooksOfSearch.length > 0 ? this.props.AllBooksOfSearch.map(book => {
 
                                         let img = (book.imageLinks ? book.imageLinks.thumbnail : "");
-                                        console.log(book.imageLinks)
-                                       
+                                        console.log(this.props.AllBooks)
+
                                         
 
-                                        console.log(book);
+                                        let currentShelf = this.props.AllBooks.filter(s => s.id == book.id);
+                                        let currentShelfValue = "";
 
+                                        if (currentShelf.length>0)
+                                        {
+                                            currentShelfValue = currentShelf[0].shelf;
+                                        }
 
                                         return (
                                             <li key={book.id}>
@@ -45,7 +51,7 @@ class ListBooksSearch extends Component {
                                                         }}></div>
                                                         <div className="book-shelf-changer">
 
-                                                            <select  onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
+                                                            <select value={currentShelfValue} onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
                                                                 <option value="move" disabled>Move to...</option>
                                                                 <option value="none">None</option>
                                                                 <option value="currentlyReading">Currently Reading</option>
