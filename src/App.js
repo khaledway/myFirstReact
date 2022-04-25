@@ -42,28 +42,27 @@ class BooksApp extends React.Component {
         BooksAPI.update(book, UpdateBookStatus).then(booksIDs =>
         {
            
-            let booksToBeUpdated = this.state.AllBooks;
+            BooksAPI.getAll().then(books => this.setState({ AllBooks: books }));
+
+            //booksToBeUpdated = this.state.AllBooks.map(book =>
+            //{
+            //    debugger;
+            //    if (booksIDs.read.includes(book.id)) {
+            //        return { ...book, shelf: 'read' };
+            //    }
+            //    else if (booksIDs.wantToRead.includes(book.id))
+            //    {
+            //       return { ...book, shelf: 'wantToRead' };
+            //    }
+            //    else
+
+            //    {
+            //        return { ...book, shelf: 'currentlyReading' };
+            //  }
 
 
-            booksToBeUpdated = this.state.AllBooks.map(book =>
-            {
-                debugger;
-                if (booksIDs.read.includes(book.id)) {
-                    return { ...book, shelf: 'read' };
-                }
-                else if (booksIDs.wantToRead.includes(book.id))
-                {
-                   return { ...book, shelf: 'wantToRead' };
-                }
-                else
-
-                {
-                    return { ...book, shelf: 'currentlyReading' };
-              }
-
-
-                return book;
-            });
+            //    return book;
+            //});
 
 
             //console.log("books intial:"+ booksToBeUpdated);
@@ -72,10 +71,10 @@ class BooksApp extends React.Component {
 
 
 
-            this.setState({
-                AllBooks: booksToBeUpdated,
+            //this.setState({
+            //    AllBooks: booksToBeUpdated,
             
-            });
+            //});
 
         }
         );
