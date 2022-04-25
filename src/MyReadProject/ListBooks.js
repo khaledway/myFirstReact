@@ -1,24 +1,16 @@
 import React, { Component } from "react";
 import * as BooksAPI from '../BooksAPI'
 
-class ListBooks extends Component {
+class ListBooks extends Component
+
+{
 
     constructor(props) {
         super(props);
     }
- 
 
-    //componentDidMount() {
-    //    fetch(
-    //        "https://jsonplaceholder.typicode.com/users")
-    //        .then((res) => res.json())
-    //        .then((json) => {
-    //            this.setState({
-    //                items: json,
-    //                DataisLoaded: true
-    //            });
-    //        })
-    //}
+
+   
 
     render() {
 

@@ -1,10 +1,85 @@
 import React, { Component } from "react";
 import * as BooksAPI from '../BooksAPI'
+import ListBooksSearch from './ListBooksSearch';
 
-class SearchBooks extends Component {
-    constructor(props) {
+class SearchBooks extends Component
+
+{
+
+    state = {
+        AllBooksOfSearch: []
+    }
+
+    constructor(props)
+    {
         super(props);
     }
+
+
+/*    AllBooksOfSearch*/
+    
+
+
+    handleSearch = event => {
+
+        debugger;
+        console.log("search is called")
+
+        //let filteredBooks = this.state.AllBooks.filter(s =>
+        //    s.title.toLowerCase().includes(event.target.value.toLowerCase()));
+
+        this.setState(prevState =>
+        ({
+            AllBooksOfSearch: []
+
+        }));
+
+
+
+        let query = event.target.value.toLowerCase();
+
+
+
+        if (query.length > 0)
+        {
+            BooksAPI.search(query).then(books => {
+            console.log(books)
+            this.setState(prevState =>
+            ({
+                AllBooksOfSearch: books
+
+            }));
+            console.log("AllBooksOfSearch:")
+            console.log(this.state.AllBooksOfSearch)
+
+        });
+
+        }
+
+
+        
+
+      //  this.handleButtonToggle();
+
+
+
+
+        //this.setState(prevState => ({
+        //    AllBooks:
+        //        (event.target.value == " " ?
+
+        //            this.state.AllBooks : filteredBooks
+
+
+        //        )
+        //}));
+
+
+
+    };
+
+
+
     render() {
    
         return <div className="search-books">
@@ -19,13 +94,14 @@ class SearchBooks extends Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                    <input type="text" placeholder="Search by title or author11" onBlur={this.props.handleSearch} />
+                    <input type="text" placeholder="Search by title or author" onChange={this.handleSearch} />
 
                 </div>
             </div>
-            <div className="search-books-results">
-                <ol className="books-grid"></ol>
-            </div>
+
+
+            <ListBooksSearch AllBooksOfSearch={this.state.AllBooksOfSearch} handelUpdateBookStatus={this.props.handelUpdateBookStatus} />
+           
         </div>;
 
     }
