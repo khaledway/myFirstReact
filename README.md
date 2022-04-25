@@ -26,6 +26,10 @@ To get started developing right away:
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
     ├── icons # Helpful images for your app. Use at your discretion.
+    │   ├── ListBooks # compnent that display my books with thier status which are [Currently Reading-Want to Read-Read]
+    │   ├── ListBooksSearch # compnent that display my books that I searched for
+    │   └── SearchBooks # compnent that contains search bar and then diplay search results
+    ├── MyReadProject # folder that contains project components
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
