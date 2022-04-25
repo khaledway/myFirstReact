@@ -41,9 +41,9 @@ class ListBooks extends Component
                                                         }}></div>
                                                         <div className="book-shelf-changer">
 
-                                                            <select    onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
+                                                            <select value={book.shelf}  onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
                 <option value="move" disabled>Move to...</option>
-                <option value="currentlyReading" selected>Currently Reading</option>
+                <option value="currentlyReading" >Currently Reading</option>
                 <option value="wantToRead" >Want to Read</option>
                 <option value="read">Read</option>
                 <option value="none">None</option>
@@ -79,10 +79,10 @@ class ListBooks extends Component
                                                             width: 128, height: 193, backgroundImage: 'url(' + book.imageLinks.smallThumbnail + ')'
                                                         }}></div>
                                                         <div className="book-shelf-changer">
-                                                            <select onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
+                                                            <select value={book.shelf} onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
                                                                 <option value="move" disabled>Move to...</option>
                                                                 <option value="currentlyReading"  >Currently Reading</option>
-                                                                <option value="wantToRead" selected>Want to Read</option>
+                                                                <option value="wantToRead" >Want to Read</option>
                                                                 <option value="read">Read</option>
                                                                 <option value="none">None</option>
                                                             </select>
@@ -116,11 +116,11 @@ class ListBooks extends Component
                                                             width: 128, height: 193, backgroundImage: 'url(' + book.imageLinks.smallThumbnail + ')'
                                                         }}></div>
                                                         <div className="book-shelf-changer">
-                                                            <select onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
+                                                            <select value={book.shelf} onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
                                                                 <option value="move" disabled>Move to...</option>
                                                                 <option value="currentlyReading">Currently Reading</option>
                                                                 <option value="wantToRead">Want to Read</option>
-                                                                <option value="read" selected>Read</option>
+                                                                <option value="read" >Read</option>
                                                                 <option value="none">None</option>
                                                             </select>
                                                         </div>

@@ -47,6 +47,7 @@ class BooksApp extends React.Component {
 
             booksToBeUpdated = this.state.AllBooks.map(book =>
             {
+                debugger;
                 if (booksIDs.read.includes(book.id)) {
                     return { ...book, shelf: 'read' };
                 }

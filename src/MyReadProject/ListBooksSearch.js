@@ -27,7 +27,10 @@ class ListBooksSearch extends Component {
 
                                         let img = (book.imageLinks ? book.imageLinks.thumbnail : "");
                                         console.log(book.imageLinks)
+                                       
+                                        
 
+                                        console.log(book);
 
 
                                         return (
@@ -42,7 +45,7 @@ class ListBooksSearch extends Component {
                                                         }}></div>
                                                         <div className="book-shelf-changer">
 
-                                                            <select onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
+                                                            <select  onChange={(selectedOption) => this.props.handelUpdateBookStatus(selectedOption, book)}>
                                                                 <option value="move" disabled>Move to...</option>
                                                                 <option value="currentlyReading">Currently Reading</option>
                                                                 <option value="wantToRead" >Want to Read</option>
